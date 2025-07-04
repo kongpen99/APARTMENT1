@@ -1,9 +1,11 @@
 @livewire('navbar')
 
-<div class="sidebar">
+@livewire('sidebar')
+
+{{-- <div class="sidebar">
     <div class="sidebar-header">
       <div class="text-center">Apartment 1.0</div>
-    </div>
+    </div> 
 
 
     <div class="sidebar-body">
@@ -31,4 +33,4 @@
             </ul>
         </div>
     </div>
-</div> 
+</div>  --}}
