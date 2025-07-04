@@ -6,7 +6,7 @@
 
     <div class="sidebar-body">
         <div class="menu">
-            <ul>
+            <ul class="list-none p-0 m-0">
                 <li wire:click ="changeMenu ('dashboard') " @if ($currentMenu == 'dashboard') class="active" @endif  class=" hover:bg-orange-300 hover:text-white transition-colors duration-200">
                     <a href="/dashboard" wire:navigate>
                         <i class="fa-solid fa-chart-line me-2 "></i> Dashboard
