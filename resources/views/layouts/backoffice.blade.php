@@ -13,11 +13,18 @@
 </head>
 
 <body class="bg-gray-100">
-    <x-sidebar />
+    {{-- <x-sidebar /> --}}
+
+    @livewire('navbar')
+
+    <div class="flex">
+        <x-sidebar />
+        
 
 
-        <div class="content"> 
+        <div class="content w-full"> 
         @yield('content')
+        </div>
     </div>
 
     @livewireScripts

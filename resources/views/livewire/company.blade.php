@@ -46,9 +46,14 @@
                  </div>
 
 
-                        <button tpye="submit" class="btn btn-primary  mt-3">
+                        {{-- <button tpye="submit" class="btn btn-primary  mt-3">
                             <i class="fa-solid fa-save mr-2"></i> บันทึกข้อมูล
-                        </button> 
+                        </button>  --}}
+                        
+                     
+                            <button class="btn btn-success mt-3" type="submit">
+                            <i class="fa-solid fa-save mr-2"></i>บันทึกข้อมูล</button>
+                      
 
                     @if ($flashMessage)
                         <div class="mt-3 alert alert-success">
@@ -56,5 +61,10 @@
                             {{ $flashMessage }}
                         </div>
                     @endif
+
+
+
          </form>
+
+         
 </div>
