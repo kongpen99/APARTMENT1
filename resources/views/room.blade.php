@@ -1,6 +1,6 @@
 @extends('layouts.backoffice')
 
-@selected('content' )
+@section('content' )
 
     @livewire('room')
 

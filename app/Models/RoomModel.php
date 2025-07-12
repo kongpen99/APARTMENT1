@@ -11,4 +11,4 @@ class RoomModel extends Model
 
     public $timestamps = false; // Enable timestamps if your table has created_at and updated_at columns
     // You can add relationships, scopes, or other methods as needed
-}
+} 

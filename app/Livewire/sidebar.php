@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Livewire;
 use Livewire\Component;
 
@@ -12,9 +11,10 @@ class Sidebar extends Component{
     }
 
     public function changeMenu($menu){
+        session()->put('current_menu', $menu);
         $this->currentMenu = $menu;
 
-        session()->put('current_menu', $menu);
+       
         return redirect()->to('/' . $menu);
     }
 

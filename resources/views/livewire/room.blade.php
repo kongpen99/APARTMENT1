@@ -6,6 +6,7 @@
             <div>ห้องพัก</div>
             <div>ทั้งหมด <strong>{{ $rooms->count()}}</strong>ห้อง</div>
         </div>
-         
     </div>
+
+    
 </div>
