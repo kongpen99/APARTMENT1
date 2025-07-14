@@ -15,7 +15,7 @@
                         <i class="fa-solid fa-building me-2"></i>บันทึกค่าใช้จ่าย</li>
 
                 <li wire:click ="changeMenu ('room') " @if ($currentMenu == 'room') class="active" @endif  class=" hover:bg-orange-300 hover:text-white transition-colors duration-200">
-                    <i class="fa-solid fa-user me-2"></i>ห้องพัก</li>
+                    <i class="fa-solid fa-house me-2"></i>ห้องพัก</li>
 
                 <li wire:click ="changeMenu ('Guest/index') " @if ($currentMenu == 'Guest/index') class="active" @endif  class=" hover:bg-orange-300 hover:text-white transition-colors duration-200">
                     <i class="fa-solid fa-user me-2"></i>ผู้เข้าพัก</li>
