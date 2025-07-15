@@ -94,11 +94,11 @@
 }
 
 .table th:first-child {
-    @apply rounded-tl-md;
+    @apply rounded-tl-2xl;
 }
 
 .table th:last-child {
-    @apply rounded-tr-md;
+    @apply rounded-tr-2xl;
 }
 
 .table td {
@@ -106,9 +106,9 @@
 }
 
 .table tr:lasr-child td:firast-child {
-    @apply rounded-bl-md;
+    @apply rounded-bl-2xl;
 }
 
 .table tr:last-child td:last-child {
-    @apply rounded-br-md;
+    @apply rounded-br-2xl;
 }
