@@ -43,6 +43,8 @@
             </tbody>
         </table>
     </div>
+    <x-modal wire:model="showModal" title="ห้องพัก" maxwidth="xl">
+ 
 
     {{-- Todo ทำการเพิ่มการแจ้งเตือนเมื่อมี Error เกิดขึ้น --}}
 
