@@ -13,7 +13,7 @@ class Room extends component{
     public $showModal = false;
     public $showModalEdit = false;
     public $showModalDelete = false;
-    public $Id;
+    public $id;
     public $name;
     public $price_day;
     public $price_month;
@@ -21,6 +21,8 @@ class Room extends component{
     public $to_number;
     public $price_per_day;
     public $price_per_month;
+    public $nameForDelete;
+    
 
     public function mount()
     {
@@ -35,22 +37,29 @@ class Room extends component{
     public function openModalEdit($id)
     {
         $this->showModalEdit = true;
-        $this->Id = $id;
+        $this->id = $id;
 
         $room = RoomModel::find($id);
 
         $this->name = $room->name;
         $this->price_day = $room->price_per_day;
-        $this->price_month = $room->price_per_month;  
+        $this->price_month = $room->price_per_month;   
     }
 
-    public function openmodaldeleted($id)
+
+    public function openModalDelete($id,$name)
     {
         $this->showModalDelete = true;
-        $this->Id = $id;
+        $this->id = $id;
+        $this->nameForDelete = $name;
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = $id;
     }
     public function updateRoom (){
-        $room = RoomModel::find($this->Id);
+        $room = RoomModel::find($this->id);
         $room->name = $this->name;
         $room->price_per_day = $this->price_day;
         $room->price_per_month = $this->price_month;
@@ -58,7 +67,7 @@ class Room extends component{
     }
     // Todo ให้ทำการค้นหาห้องพักจาก ID ที่รับมา
     public function deleteRoom (){
-        $room = RoomModel::find($this->Id);
+        $room = RoomModel::find($this->id);
         $room->status ='deleted';
         $room->save();
         $this->showModalDelete = false; 
