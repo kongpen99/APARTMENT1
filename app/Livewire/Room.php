@@ -13,16 +13,15 @@ class Room extends component{
     public $showModal = false;
     public $showModalEdit = false;
     public $showModalDelete = false;
-    public $id;
+    public $id; 
     public $name;
     public $price_day;
     public $price_month;
     public $from_number;
-    public $to_number;
+    public $to_number; 
     public $price_per_day;
     public $price_per_month;
     public $nameForDelete;
-    
 
     public function mount()
     {
@@ -39,8 +38,7 @@ class Room extends component{
         $this->showModalEdit = true;
         $this->id = $id;
 
-        $room = RoomModel::find($id);
-
+        $room = RoomModel::find($id); 
         $this->name = $room->name;
         $this->price_day = $room->price_per_day;
         $this->price_month = $room->price_per_month;   
@@ -56,7 +54,7 @@ class Room extends component{
 
     public function closeModal()
     {
-        $this->showModal = $id;
+        $this->showModal =$id;
     }
     public function updateRoom (){
         $room = RoomModel::find($this->id);
