@@ -11,16 +11,11 @@
     @livewireStyles
 
 </head>
-
 <body class="bg-gray-100">
-    {{-- <x-sidebar /> --}}
-
     @livewire('navbar')
-
+    
     <div class="flex">
         <x-sidebar />
-        
-
 
         <div class="content w-full"> 
         @yield('content')

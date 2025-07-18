@@ -105,10 +105,14 @@
     @apply pl-3 p-2 bg-gray-100;
 }
 
-.table tr:lasr-child td:firast-child {
+.table tr:last-child td:first-child {
     @apply rounded-bl-2xl;
 }
 
 .table tr:last-child td:last-child {
     @apply rounded-br-2xl;
+}
+
+.alert-danger {
+    @apply bg-red-500 text-white p-3 rounded-md pl-5 mb-3;
 }

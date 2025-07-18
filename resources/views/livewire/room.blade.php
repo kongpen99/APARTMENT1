@@ -26,9 +26,9 @@
             <tbody>
                 @foreach ($rooms as $room)
                 <tr> 
-                    <td class="trxt-right">{{ $room->name }}</td>
-                    <td class="text-right">{{ number_format($room->price_per_day, 2) }}</td>
-                    <td class="text-right">{{ number_format($room->price_per_month, 2) }}</td>
+                    <td class="trxt-left">{{ $room->name }}</td>
+                    <td class="text-left">{{ number_format($room->price_per_day, 2) }}</td>
+                    <td class="text-left">{{ number_format($room->price_per_month, 2) }}</td>
                     <td class="text-center">
 
                         <button class="btn-edit mr-2" wire:click="openModalEdit({{ $room->id }})" >
@@ -39,13 +39,10 @@
                         </button>
                     </td> 
                 </tr>
-                @endforeach
+                @endforeach   
             </tbody>
         </table>
     </div>
-        <x-modal wire:model="showModal" title="ห้องพัก" maxwidth="xl">
-        </x-modal>
- 
 
     {{-- Todo ทำการเพิ่มการแจ้งเตือนเมื่อมี Error เกิดขึ้น --}}
 
@@ -94,5 +91,6 @@
         <x-modal-confirm wire:model="showModelDelete" title="ลบห้องพัก"
     text="คูณต้องการลบห้องพัก {{ $nameForDelete}} หรือไม่" clickConfirm="deleteRoom"
     clickCancel="showModalDelete = false" />
+
 </div> 
       

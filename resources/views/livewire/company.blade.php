@@ -42,10 +42,12 @@
                 <div class="mt-3">
                     <label for="note">หมายเหตุ</label>
                     <input type="text" class="form-control" wire:model="note">
+                    
+                    {{-- Todo ช่องหมายเหตุแบบหลายบรรทัด --}}
                     {{-- <textarea class="form-control" wire:model="note"></textarea> --}}
                  </div>
 
-
+                 {{-- Todo สำหรับการบันทึกข้อมูล ปุ่มสีส้ม --}}
                         {{-- <button tpye="submit" class="btn btn-primary  mt-3">
                             <i class="fa-solid fa-save mr-2"></i> บันทึกข้อมูล
                         </button>  --}}
@@ -61,10 +63,5 @@
                             {{ $flashMessage }}
                         </div>
                     @endif
-
-
-
-         </form>
-
-         
+         </form>         
 </div>

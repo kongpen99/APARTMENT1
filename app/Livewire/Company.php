@@ -48,6 +48,8 @@ namespace App\Livewire;
             if (OrganizationModel::count() == 0) {
                 $organization = new OrganizationModel();
             }else{
+                
+            //Todo--ทำการ Remove Logo เก่าออก --//
                 $organization = OrganizationModel::first();
 
                 if ($organization->logo){

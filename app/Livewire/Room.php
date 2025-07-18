@@ -52,10 +52,10 @@ class Room extends component{
         $this->nameForDelete = $name;
     }
 
-    public function closeModal()
-    {
-        $this->showModal =$id;
-    }
+    // public function closeModal()
+    // {
+    //     $this->showModal =$id;
+    // }
     public function updateRoom (){
         $room = RoomModel::find($this->id);
         $room->name = $this->name;
@@ -66,8 +66,8 @@ class Room extends component{
     // Todo ให้ทำการค้นหาห้องพักจาก ID ที่รับมา
     public function deleteRoom (){
         $room = RoomModel::find($this->id);
-        $room->status ='deleted';
-        $room->save();
+        $room->status ='delete';
+        $room->save();  
         $this->showModalDelete = false; 
         $this->fetchData();
     }
