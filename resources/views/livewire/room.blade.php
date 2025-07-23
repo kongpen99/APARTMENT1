@@ -19,7 +19,7 @@
                     <th class="text-left">ห้องพัก</th> 
                     <th class="text-left" width="150px">ค่าเช่าต่อวัน</th>
                     <th class="text-left" width="150px">ค่าเช่าต่อเดือน</th>
-                    <th width="130px"></th>
+                    <th width="130px"></th> 
                 </tr>
             </thead>
 
@@ -31,10 +31,10 @@
                     <td class="text-left">{{ number_format($room->price_per_month, 2) }}</td>
                     <td class="text-center">
 
-                        <button class="btn-edit mr-2" wire:click="openModalEdit({{ $room->id }})" >
+                        <button class="btn-edit mr-2" wire:click="openModalEdit({{ $room->id }})">
                             <i class="fa fa-pencil mr-2"></i>
                         </button>                     
-                        <button class="btn-delete" wire:click="openModalDelete({{ $room->id,$room->name }})">
+                        <button class="btn-delete" wire:click="openModalDelete({{ $room->id}})">
                             <i class="fa fa-times mr-2"></i>
                         </button>
                     </td> 
@@ -43,9 +43,8 @@
             </tbody>
         </table>
     </div>
-
+    
     {{-- Todo ทำการเพิ่มการแจ้งเตือนเมื่อมี Error เกิดขึ้น --}}
-
         <x-modal wire:model="showModal" title="ห้องพัก" maxwidth="xl">
             @if ($errors->any())
                     <div class="alert-danger">
@@ -60,25 +59,25 @@
         </div>
             <div class="flex gap-5 mt-3">
                 <div class="w-1/2">
-                    <label>เริ่มหมายเลข</label>
-                    <input type="number" class="form-control" wire:model="fromNumber" placeholder="เช่น 1, 2, 3, ...">
+                    <label>จากหมายเลข</label>
+                    <input type="text" class="form-control" wire:model="from_number" placeholder="เช่น 1, 2, 3, ...">
                 </div>
                 <div class="w-1/2">
                     <label>ถึงหมายเลข</label>
-                    <input type="number" class="form-control" wire:model="fromNumber" placeholder="เช่น 1, 2, 3, ...">
+                    <input type="text" class="form-control" wire:model="to_number" placeholder="เช่น 1, 2, 3, ...">
                 </div>
                 <div class="w-1/2">
                     <label>ค่าเช่าต่อวัน</label>
-                    <input type="number" class="form-control" wire:model="fromNumber" placeholder="จำนวนเงิน/บาท">
+                    <input type="text" class="form-control" wire:model="price_per_day" placeholder="จำนวนเงิน/บาท">
                 </div>
                 <div class="w-1/2">
                     <label>ค่าเช่าต่อเดือน</label>
-                    <input type="number" class="form-control" wire:model="fromNumber" placeholder="จำนวนเงิน/บาท">
+                    <input type="text" class="form-control" wire:model="price_per_month" placeholder="จำนวนเงิน/บาท">
                 </div>                        
             </div>
 
         <div class="mt-5 text-center pb-3">
-            <button class="btn-success" wire:click="createRooms">
+            <button class="btn-success" wire:click="createRoom">
                 <i class="fa-solid fa-check mr-2"></i>
                 สร้างห้องพัก
             </button>
@@ -87,10 +86,14 @@
                 ยกเลิก
             </button>
         </div>   
-        </x-modal>    
-        <x-modal-confirm wire:model="showModelDelete" title="ลบห้องพัก"
-    text="คูณต้องการลบห้องพัก {{ $nameForDelete}} หรือไม่" clickConfirm="deleteRoom"
-    clickCancel="showModalDelete = false" />
+        </x-modal>   
+
+        <x-modal-confirm 
+            wire:model="showModalDelete" 
+            title="ลบห้องพัก"
+            text="คูณต้องการลบห้องพัก {{ $nameForDelete}} หรือไม่" 
+            clickConfirm="deleteRoom" 
+            clickCancel="showModalDelete = false"/>
 
 </div> 
-      
+       
