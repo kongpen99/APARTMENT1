@@ -1,4 +1,3 @@
-
 <div>
     <div class="content-header">
 
@@ -17,8 +16,8 @@
             <thead>
                 <tr>
                     <th class="text-left">ห้องพัก</th> 
-                    <th class="text-left" width="150px">ค่าเช่าต่อวัน</th>
-                    <th class="text-left" width="150px">ค่าเช่าต่อเดือน</th>
+                    <th class="text-right" width="150px">ค่าเช่าต่อวัน</th>
+                    <th class="text-right" width="150px">ค่าเช่าต่อเดือน</th>
                     <th width="130px"></th>
                 </tr>
             </thead>
@@ -26,16 +25,22 @@
             <tbody>
                 @foreach ($rooms as $room)
                 <tr> 
-                    <td class="trxt-left">{{ $room->name }}</td>
-                    <td class="text-left">{{ number_format($room->price_per_day, 2) }}</td>
-                    <td class="text-left">{{ number_format($room->price_per_month, 2) }}</td>
-                    <td class="text-center">
 
+<<<<<<< HEAD
                         <button class="btn-edit" wire:click="openModalEdit({{ $room->id }})" >
                             <i class="fa fa-pencil mr-2"></i>
+=======
+                    <td>{{ $room->name }}</td>
+                    <td class="text-right">{{ number_format($room->price_per_day) }}</td>
+                    <td class="text-right">{{ number_format($room->price_per_month) }}</td>
+                    <td class="text-right">
+
+                        <button class="btn-edit" wire:click="openModalEdit({{ $room->id }})" >
+                            <i class="fa-solid fa-pencil mr-2"></i>
+>>>>>>> f20bd98c1c540be11956e1544e82d8c06185d7d5
                         </button>                     
-                        <button class="btn-delete" wire:click="openModalDelete({{ $room->id,$room->name }})">
-                            <i class="fa fa-times mr-2"></i>
+                        <button class="btn-delete" wire:click="openModalDelete({{ $room->id}})">
+                            <i class="fa-solid fa-times mr-2"></i>
                         </button>
                     </td> 
                 </tr>
@@ -54,8 +59,11 @@
                         @endforeach
                     </div>
             @endif
+<<<<<<< HEAD
 
     {{-- TODO ทำการเพิ่มหอพัก และบันทึกข้อมูล--}}
+=======
+>>>>>>> f20bd98c1c540be11956e1544e82d8c06185d7d5
         <div>
             <h1 class="text-xl text-red-500">สร้างห้องพักแบบจำนวนมากในครั้งเดียว</h1>
         </div>
@@ -77,9 +85,15 @@
                     <input type="text" class="form-control" wire:model="price_per_month" placeholder="จำนวนเงิน/บาท">
                 </div>                        
             </div>
+<<<<<<< HEAD
  
         <div class="mt-5 text-center pb-3">
             <button class="btn-success" wire:click="createRoom">
+=======
+
+        <div class="mt-5 text-center pb-5">
+            <button class="btn-success mr-2" wire:click="createRooms">
+>>>>>>> f20bd98c1c540be11956e1544e82d8c06185d7d5
                 <i class="fa-solid fa-check mr-2"></i>
                 บันทึกสร้างห้องพัก
             </button>
@@ -89,9 +103,36 @@
             </button>
         </div>   
         </x-modal>    
-        <x-modal-confirm wire:model="showModelDelete" title="ลบห้องพัก"
-    text="คูณต้องการลบห้องพัก {{ $nameForDelete}} หรือไม่" clickConfirm="deleteRoom"
-    clickCancel="showModalDelete = false" />
 
+        <x-modal wire:model="showModeEdit" title="แก้ไขห้องพัก" maxwidth="xl">
+            <div>ห้องพัก</div>
+            <input type="text" class="form-control" wire:model="name" placeholder="ชื่อห้องพัก">
+
+            <div class="mt-3">ราคาเช่าต่อวัน</div>
+            <input type="text" class="form-control" type="number" wire:model="price_day" placeholder="จำนวนเงิน/บาท">
+            <div class="mt-3">ราคาเช่าต่อเดือน</div>
+            <input type="text" class="form-control" type="number" wire:model="price_month" placeholder="จำนวนเงิน/บาท">
+
+            <div class="mt-5 text-center pb-5">
+                <button class="btn-success mr-2" wire:click="updateRoom">
+                    <i class="fa-solid fa-check mr-2"></i>
+                    บันทึก
+                </button>
+                <button class="btn-danger" wire:click="showModeEdit = false"> 
+                    <i class="fa-solid fa-times mr-2"></i>
+                    ยกเลิก
+                </button>
+            </div>
+        </x-modal>
+
+        <x-modal-confirm 
+            wire:model="showModalDelete"
+            title="ลบห้องพัก"
+            text="คุณต้องการลบห้อง {{$name}}พักใช่หรือไม่?">
+            clickConfirm="deleteRoom"
+            clickCancel="showModalDelete = false"
+        </x-modal>
+
+       
 </div> 
       
