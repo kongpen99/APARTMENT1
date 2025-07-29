@@ -54,13 +54,20 @@ class Room extends component{
     // {
     //     $this->showModal =$id;
     // }
+
+
+//    {{-- TODO ใช้สำหรับในการแก้ไขข้อมูล และทำการบันทึก --}}
     public function updateRoom (){
         $room = RoomModel::find($this->id);
         $room->name = $this->name;
         $room->price_per_day = $this->price_day;
         $room->price_per_month = $this->price_month;
         $room->save();
+
+        $this->showModalEdit = false;
+        $this->fetchData();
     }
+    // {{-- TODO ใช้สำหรับในการแก้ไขข้อมูล และทำการบันทึก --}}
     // Todo ให้ทำการค้นหาห้องพักจาก ID ที่รับมา
     public function deleteRoom (){
         $room = RoomModel::find($this->id);
