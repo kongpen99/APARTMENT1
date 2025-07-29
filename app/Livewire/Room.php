@@ -2,10 +2,8 @@
 
 namespace App\Livewire;
 
-
 use Livewire\Component;
 use App\Models\RoomModel;
-
 
 class Room extends component{
 
@@ -79,7 +77,7 @@ class Room extends component{
     }
     public function createRoom(){
         $this->validate([
-          'from_number' => 'required',
+            'from_number' => 'required',
             'to_number' => 'required', 
             'price_per_day' => 'required',
             'price_per_month' => 'required',
@@ -89,11 +87,12 @@ class Room extends component{
             $this->addError('from_number', 'ห้องต้องมีค่าน้อยกว่าห้องสุดท้าย');
             return;
         }
-        if ($this->from_number >1000) {
-            $this->addError('from_number', 'ห้องสุดท้ายต้องไม่เกิน 1000');
+        if ($this->to_number >1000) {
+            $this->addError('to_number', 'ห้องสุดท้ายต้องไม่เกิน 1000');
             return;
         }
         for($i = $this->from_number; $i <= $this->to_number; $i++) {
+            
             $room = new RoomModel();
             $room->name = 'ห้องที่ '.$i;
             $room->price_per_day = $this->price_per_day;
