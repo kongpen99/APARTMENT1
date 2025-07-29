@@ -7,7 +7,7 @@ use Livewire\Component;
 use App\Models\RoomModel;
 
 
-class Room extends component{
+class Room extends Component{
 
     public $rooms =[];
     public $showModal = false;
@@ -31,6 +31,11 @@ class Room extends component{
     public function openModal()
     {
         $this->showModal = true;
+        $this->from_number = '';
+        $this->to_number = '';
+        $this->price_per_day = '';
+        $this->price_per_month = '';
+
     }
 
     public function openModalEdit($id)
@@ -45,11 +50,13 @@ class Room extends component{
     }
 
 
-    public function openModalDelete($id,$name)
+    public function openModalDelete($id)
     {
         $this->showModalDelete = true;
         $this->id = $id;
-        $this->nameForDelete = $name;
+
+        $room = RoomModel::find($id);
+        $this->nameForDelete = $room->name;
     }
 
     // public function closeModal()
@@ -67,7 +74,8 @@ class Room extends component{
     public function deleteRoom (){
         $room = RoomModel::find($this->id);
         $room->status ='delete';
-        $room->save();  
+        $room->save(); 
+
         $this->showModalDelete = false; 
         $this->fetchData();
     }
@@ -84,13 +92,15 @@ class Room extends component{
             'price_per_day' => 'required',
             'price_per_month' => 'required',
         ]);
+ 
+        // todo ให้ทำการสร้างห้องพักใหม่จากข้อมูลที่รับมา //
 
         if ($this->from_number >$this->to_number) {
             $this->addError('from_number', 'ห้องต้องมีค่าน้อยกว่าห้องสุดท้าย');
             return;
         }
-        if ($this->from_number >1000) {
-            $this->addError('from_number', 'ห้องสุดท้ายต้องไม่เกิน 1000');
+        if ($this->to_number >1000) {
+            $this->addError('to_number', 'ห้องสุดท้ายต้องไม่เกิน 1000');
             return;
         }
         for($i = $this->from_number; $i <= $this->to_number; $i++) {
@@ -105,22 +115,23 @@ class Room extends component{
         $this->fetchData();
 
 
-        // todo ให้ทำการสร้างห้องพักใหม่จากข้อมูลที่รับมา
-        // $this->validate([
-        //     'name' => 'required|string|max:255',
-        //     'price_day' => 'required|numeric|min:0',
-        //     'price_month' => 'required|numeric|min:0',
-        // ]);
+        //todo ให้ทำการสร้างห้องพักใหม่จากข้อมูลที่รับมา//
+        
+        $this->validate([
+            'name' => 'required|string|max:255',
+            'price_day' => 'required|numeric|min:0',
+            'price_month' => 'required|numeric|min:0',
+        ]);
 
-        // RoomModel::create([
-        //     'name' => $this->name,
-        //     'price_per_day' => $this->price_day,
-        //     'price_per_month' => $this->price_month,
-        //     'status' => 'use',
-        // ]);
+        RoomModel::create([
+            'name' => $this->name,
+            'price_per_day' => $this->price_day,
+            'price_per_month' => $this->price_month,
+            'status' => 'use',
+        ]);
 
-        // $this->showModal = false;
-        // $this->fetchData();
+        $this->showModal = false;
+        $this->fetchData();
 
     }
 

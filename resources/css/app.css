@@ -70,7 +70,7 @@
 }
 
 .menu li {
-    @apply p-3 pl-5 rounded-md;
+    @apply p-2 pl-3 rounded-md;
 }
 
 .active {
