@@ -4,7 +4,7 @@
 
         <div class="flex justify-between">
             <div>ห้องพัก</div>
-            <div>ทั้งหมด <strong>{{ $rooms->count()}}</strong>ห้อง</div>
+            <div>ทั้งหมด <strong>{{ $rooms->count() }}</strong>ห้อง</div>
         </div>
     </div>
     <div class="content-body">
@@ -26,16 +26,16 @@
             <tbody>
                 @foreach ($rooms as $room)
                 <tr> 
-                    <td class="trxt-left">{{ $room->name }}</td>
+                    <td>{{ $room->name }}</td>
                     <td class="text-left">{{ number_format($room->price_per_day, 2) }}</td>
                     <td class="text-left">{{ number_format($room->price_per_month, 2) }}</td>
                     <td class="text-center">
 
-                        <button class="btn-edit" wire:click="openModalEdit({{ $room->id }})" >
-                            <i class="fa fa-pencil mr-2"></i>
+                        <button class="btn-edit" wire:click="openModalEdit({{ $room->id }})">
+                            <i class="fa-solid fa-pencil mr-2"></i>
                         </button>                     
-                        <button class="btn-delete" wire:click="openModalDelete({{ $room->id,$room->name }})">
-                            <i class="fa fa-times mr-2"></i>
+                        <button class="btn-delete" wire:click="openModalDelete({{ $room->id}})">
+                            <i class="fa-solid fa-times mr-2"></i>
                         </button>
                     </td> 
                 </tr>
@@ -60,7 +60,7 @@
             </div>
                 <div class="flex gap-5 mt-3">
                     <div class="w-1/2">
-                        <label>เริ่มหมายเลข</label>
+                        <label>จากหมายเลข</label>
                         <input type="text" class="form-control" wire:model="from_number" placeholder="เช่น 1, 2, 3, ...">
                     </div>
                     <div class="w-1/2">
@@ -87,8 +87,10 @@
                 ยกเลิก
             </button>
         </div>   
-        </x-modal>   
+        </x-modal>  
+
         {{-- TODO ใช้สำหรับในการแก้ไขข้อมูล และทำการบันทึก --}}
+
         <x-modal wire:model="showModalEdit" title="แก้ไขห้องพัก" maxwidth="xl">
             <div>ห้องพัก</div>
             <input type="text" class="form-control" wire:model="name" placeholder="ชื่อห้องพัก">
@@ -113,9 +115,13 @@
         </x-modal>
         {{-- TODO ใช้สำหรับในการแก้ไขข้อมูล และทำการบันทึก --}}
         
-        <x-modal-confirm wire:model="showModelDelete" title="ลบห้องพัก"
-    text="คูณต้องการลบห้องพัก {{ $nameForDelete}} หรือไม่" clickConfirm="deleteRoom"
-    clickCancel="showModalDelete = false" />
-
+        <x-modal-confirm 
+            wire:model="showModalDelete" 
+            title="ลบห้องพัก"
+            {{-- text="คูณต้องการลบห้องพัก {{ $nameForDelete }} หรือไม่"  --}}
+            text="คูณต้องการลบห้องพัก {{ $nameForDelete }} หรือไม่" 
+            clickConfirm="deleteRoom"
+            clickCancel="showModalDelete = false" />
+      
 </div> 
       

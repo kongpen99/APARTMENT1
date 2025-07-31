@@ -9,11 +9,11 @@
                 <div class="text-2xl mt-3">{{$text}}</div>
             </div>
                 <div class="mt-5 text-center pb-5">
-                    <button class="btn-success mr-2" wire:click="{{$clickConfirm}}">
+                    <button class="btn-success mr-2" wire:click="{{ $clickConfirm }}">
                         <i class="fa-solid fa-check mr-2"></i> 
                         ยืนยัน
                     </button>  
-                <button class="btn-secondary" wire:click="{{$clickCancel}}">
+                <button class="btn-secondary" wire:click="{{ $clickCancel }}">
                         <i class="fa-solid fa-items mr-2"></i> 
                         ยกเลิก
                     </button> 

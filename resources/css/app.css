@@ -121,6 +121,6 @@ tbody tr {
     @apply border-b bg-gray-300;
 }
 
-tbody tr:nth-child(even) {
+tbody tr:last-child {
     @apply border-b-0;
 }

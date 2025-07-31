@@ -24,11 +24,17 @@ class Room extends component{
     public function mount()
     {
         $this->fetchData();
+       
      }
+
 
     public function openModal()
     {
         $this->showModal = true;
+        $this->from_number = '';
+        $this->to_number = '';
+        $this->price_per_day = '';
+        $this->price_per_month = '';
     }
 
     public function openModalEdit($id)
@@ -43,18 +49,15 @@ class Room extends component{
     }
 
 
-    public function openModalDelete($id,$name)
+
+    public function openModalDelete($id)
     {
         $this->showModalDelete = true;
         $this->id = $id;
-        $this->nameForDelete = $name;
+
+        $room = RoomModel::find($id);
+        $this->nameForDelete = $room->name;
     }
-
-    // public function closeModal()
-    // {
-    //     $this->showModal =$id;
-    // }
-
 
 //    {{-- TODO ใช้สำหรับในการแก้ไขข้อมูล และทำการบันทึก --}}
     public function updateRoom (){
@@ -64,26 +67,27 @@ class Room extends component{
         $room->price_per_month = $this->price_month;
         $room->save();
 
-        $this->showModalEdit = false;
+        $this->showModalEdit = false; 
         $this->fetchData();
     }
-    // {{-- TODO ใช้สำหรับในการแก้ไขข้อมูล และทำการบันทึก --}}
     // Todo ให้ทำการค้นหาห้องพักจาก ID ที่รับมา
     public function deleteRoom (){
         $room = RoomModel::find($this->id);
         $room->status ='delete';
-        $room->save();  
+        $room->save(); 
+
         $this->showModalDelete = false; 
         $this->fetchData();
     }
     public function fetchData (){
         $this->rooms = RoomModel::where('status','use')
-        ->orderBy('id', 'desc')
+        ->orderBy('id', 'asc')
         ->get();
 
     }
     public function createRoom(){
         $this->validate([
+            
             'from_number' => 'required',
             'to_number' => 'required', 
             'price_per_day' => 'required',
@@ -107,8 +111,8 @@ class Room extends component{
             $room->status = 'use';
             $room->save();
         }
-        $this->showModal = false;
-        $this->fetchData();
+            $this->showModal = false;
+            $this->fetchData();
 
 
         // todo ให้ทำการสร้างห้องพักใหม่จากข้อมูลที่รับมา
