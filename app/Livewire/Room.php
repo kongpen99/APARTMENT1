@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Livewire;
-
 use Livewire\Component;
 use App\Models\RoomModel;
 
-class Room extends component{
+class Room extends Component{
 
     public $rooms =[];
     public $showModal = false;
@@ -20,6 +19,8 @@ class Room extends component{
     public $price_per_day;
     public $price_per_month;
     public $nameForDelete;
+
+
 
     public function mount()
     {
@@ -36,6 +37,7 @@ class Room extends component{
         $this->price_per_day = '';
         $this->price_per_month = '';
     }
+
 
     public function openModalEdit($id)
     {
@@ -106,6 +108,7 @@ class Room extends component{
             
             $room = new RoomModel();
             $room->name = 'ห้องที่ '.$i;
+            // $room->name = $i;
             $room->price_per_day = $this->price_per_day;
             $room->price_per_month = $this->price_per_month; 
             $room->status = 'use';

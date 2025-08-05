@@ -15,16 +15,20 @@
 
  {{--todo:ใช้แสดง popup confirm ออกจากระบบ--}}
  
-<div x-data="{ show: @entangle($attributes->wire('model')) }" x-on:close.stop="show = false" x-on:keydown.escape.window="show = false" x-show="show" 
-        class="fixed inset-0 z-50 px-4 py-6 overflow-y-auto sm:px-0 " style="display:none;">
-            <div class="flex inset-0 transform transition-all" x-on:click="show = false">
+<div    x-data="{ show: @entangle($attributes->wire('model')) }"
+        x-on:close.stop="show = false"
+        x-on:keydown.escape.window="show = false" x-show="show" 
+        class="fixed inset-0 z-50 px-4 py-6 overflow-y-auto sm:px-0 " 
+        style="display:none;">
+
+            <div class="inset-0 flex transition-all transform" x-on:click="show = false">
                  <div class="absolute inset-0 bg-gray-200 opacity-30"></div>
             
     </div>
            
         <div class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full {{$maxWidth}} sm:mx-auto"
         x-show="show" x-trap.inert.noscroll="show">
-            <div class="px-3 py-3 bg-orange-500 text-white">
+            <div class="px-3 py-3 text-white bg-orange-500">
                 <div class="text-lg font-medium">{{ $title }}</div>
             </div>
             

@@ -26,9 +26,9 @@
             <tbody>
                 @foreach ($rooms as $room)
                 <tr> 
-                    <td>{{ $room->name }}</td>
-                    <td class="text-left">{{ number_format($room->price_per_day, 2) }}</td>
-                    <td class="text-left">{{ number_format($room->price_per_month, 2) }}</td>
+                    <td class="text-left">{{ $room->name }}</td>
+                    <td class="text-left">{{ number_format($room->price_per_day,) }}</td>
+                    <td class="text-left">{{ number_format($room->price_per_month,) }}</td>
                     <td class="text-center">
 
                         <button class="btn-edit" wire:click="openModalEdit({{ $room->id }})">
@@ -77,17 +77,17 @@
                     </div>                        
                 </div>
 
-        <div class="mt-5 text-center pb-3">
-            <button class="btn-success" wire:click="createRoom">
-                <i class="fa-solid fa-check mr-2"></i>
-                สร้างห้องพัก
-            </button>
-            <button class="btn-danger" wire:click="showModal = false"> 
-                <i class="fa-solid fa-times mr-2"></i>
-                ยกเลิก
-            </button>
-        </div>   
-        </x-modal>  
+            <div class="mt-5 text-center pb-3">
+                <button class="btn-success" wire:click="createRoom">
+                    <i class="fa-solid fa-check mr-2"></i>
+                    สร้างห้องพัก
+                </button>
+                <button class="btn-danger" wire:click="showModal = false"> 
+                    <i class="fa-solid fa-times mr-2"></i>
+                    ยกเลิก
+                </button>
+            </div>   
+            </x-modal>  
 
         {{-- TODO ใช้สำหรับในการแก้ไขข้อมูล และทำการบันทึก --}}
 
@@ -113,15 +113,14 @@
                 </button>
             </div>
         </x-modal>
-        {{-- TODO ใช้สำหรับในการแก้ไขข้อมูล และทำการบันทึก --}}
-        
+
+        {{-- TODO ใช้สำหรับในการลบข้อมูล และทำการบันทึก --}}
+          
         <x-modal-confirm 
             wire:model="showModalDelete" 
             title="ลบห้องพัก"
-            {{-- text="คูณต้องการลบห้องพัก {{ $nameForDelete }} หรือไม่"  --}}
-            text="คูณต้องการลบห้องพัก {{ $nameForDelete }} หรือไม่" 
-            clickConfirm="deleteRoom"
-            clickCancel="showModalDelete = false" />
-      
+            text ="คุณต้องการลบห้องพัก{{ $nameForDelete }}นี้หรือไม่?" 
+            clickConfirm ="deleteRoom" 
+            clickCancel="showModalDelete = false"/>
 </div> 
       

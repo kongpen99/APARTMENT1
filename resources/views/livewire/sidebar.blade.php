@@ -2,8 +2,10 @@
     <div class="sidebar-header">
       <div class="text-center">Apartment 1.0</div>
     </div>
+
 {{-- Todo เมนูทางด้านซ้าย(Menu) --}}
     <div class="sidebar-body">
+
         <div class="menu"> 
             <ul>
                 <li wire:click ="changeMenu ('dashboard')" @if($currentMenu == 'dashboard') class="active" @endif>
